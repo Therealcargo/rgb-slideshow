@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Red Green Blue Slideshow</title>
+	<style>
+		.slideshow {
+			max-width: 500px;
+			position: relative;
+			margin: auto;
+		}
+
+		.slide {
+			display: none;
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			opacity: 0.7;
+		}
+
+		.slide.active {
+			display: block;
+		}
+
+		.slide-red {
+			background-color: red;
+		}
+
+		.slide-green {
+			background-color: green;
+		}
+
+		.slide-blue {
+			background-color: blue;
+		}
+	</style>
+</head>
+<body>
+	<div class="slideshow">
+		<div class="slide slide-red active"></div>
+		<div class="slide slide-green"></div>
+		<div class="slide slide-blue"></div>
+	</div>
+
+	<script>
+		var slides = document.querySelectorAll(".slide");
+		var currentSlide = 0;
+
+		function nextSlide() {
+			slides[currentSlide].classList.remove("active");
+			currentSlide = (currentSlide + 1) % slides.length;
+			slides[currentSlide].classList.add("active");
+		}
+
+		setInterval(nextSlide, 3000);
+	</script>
+</body>
+</html>
